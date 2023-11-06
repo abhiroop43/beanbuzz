@@ -5,16 +5,21 @@ import {
   StyleSheet,
   TextInput,
   TouchableOpacity,
+  FlatList,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
 
 import { MapPinIcon } from "react-native-heroicons/solid";
 import { BellIcon, MagnifyingGlassIcon } from "react-native-heroicons/outline";
 import { themeColors } from "../theme";
+import { categories } from "../constants";
+import { cn } from "../lib/utils";
 
 export default function HomeScreen() {
+  const [activeCategory, setActiveCategory] = useState(1);
+
   return (
     <View className="flex-1 relative bg-white">
       <StatusBar />
@@ -55,6 +60,40 @@ export default function HomeScreen() {
         </View>
 
         {/*categories*/}
+        <View className="px-5 mt-6">
+          <FlatList
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            data={categories}
+            keyExtractor={(item) => item.id}
+            className="overflow-visible"
+            renderItem={({ item }) => {
+              let isActive = item.id === activeCategory;
+
+              return (
+                <TouchableOpacity
+                  onPress={() => setActiveCategory(item.id)}
+                  className={cn(
+                    "p-4 px-5 rounded-full mr-2 shadow",
+                    isActive ? `bg-[${themeColors.bgLight}]` : "bg-gray-200",
+                  )}
+                  style={{}}
+                >
+                  <Text
+                    className={cn(
+                      "font-semibold",
+                      isActive ? "text-white" : "text-gray-700",
+                    )}
+                  >
+                    {item.title}
+                  </Text>
+                </TouchableOpacity>
+              );
+            }}
+          />
+        </View>
+
+        {/*coffee cards*/}
       </SafeAreaView>
     </View>
   );
