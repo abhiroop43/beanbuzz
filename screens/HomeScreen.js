@@ -74,15 +74,15 @@ export default function HomeScreen() {
             className="overflow-visible"
             renderItem={({ item }) => {
               let isActive = item.id === activeCategory;
-              let bgActive = `bg-[${themeColors.bgLight}]`;
               return (
                 <TouchableOpacity
                   onPress={() => setActiveCategory(item.id)}
-                  className={cn(
-                    "p-4 px-5 rounded-full mr-2 shadow",
-                    isActive ? bgActive : "bg-gray-200",
-                  )}
-                  style={{}}
+                  style={{
+                    backgroundColor: isActive
+                      ? themeColors.bgLight
+                      : "rgba(0,0,0,0.07)",
+                  }}
+                  className="p-4 px-5 mr-2 rounded-full shadow"
                 >
                   <Text
                     className={cn(
@@ -128,3 +128,8 @@ const styles = StyleSheet.create({
     marginTop: StatusBar.currentHeight,
   },
 });
+
+/** To fix the warning of ViewPropTypes, use these guides:
+ https://stackoverflow.com/questions/71702392/viewproptypes-will-be-removed-from-react-native-migrate-to-viewproptypes-export
+ https://github.com/meliorence/react-native-snap-carousel/issues/923
+ **/
