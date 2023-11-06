@@ -13,12 +13,17 @@ import { StatusBar } from "expo-status-bar";
 
 import { MapPinIcon } from "react-native-heroicons/solid";
 import { BellIcon, MagnifyingGlassIcon } from "react-native-heroicons/outline";
+import Carousel from "react-native-snap-carousel";
+
 import { themeColors } from "../theme";
-import { categories } from "../constants";
+import { categories, coffeeItems } from "../constants";
 import { cn } from "../lib/utils";
+import CoffeeCard from "../components/CoffeeCard";
 
 export default function HomeScreen() {
   const [activeCategory, setActiveCategory] = useState(1);
+
+  // TODO: Refactor all sections into separate components
 
   return (
     <View className="flex-1 relative bg-white">
@@ -69,13 +74,13 @@ export default function HomeScreen() {
             className="overflow-visible"
             renderItem={({ item }) => {
               let isActive = item.id === activeCategory;
-
+              let bgActive = `bg-[${themeColors.bgLight}]`;
               return (
                 <TouchableOpacity
                   onPress={() => setActiveCategory(item.id)}
                   className={cn(
                     "p-4 px-5 rounded-full mr-2 shadow",
-                    isActive ? `bg-[${themeColors.bgLight}]` : "bg-gray-200",
+                    isActive ? bgActive : "bg-gray-200",
                   )}
                   style={{}}
                 >
@@ -94,6 +99,21 @@ export default function HomeScreen() {
         </View>
 
         {/*coffee cards*/}
+        <View className="mt-16 py-2">
+          <Carousel
+            containerCustomStyle={{ overflow: "visible" }}
+            data={coffeeItems}
+            loop={true}
+            renderItem={({ item }) => <CoffeeCard item={item} />}
+            firstItem={1}
+            inactiveSlideOpacity={0.75} // opacity of inactive slides
+            inactiveSlideScale={0.77} // size of inactive slides
+            sliderWidth={400} // slider width
+            itemWidth={260} // card width
+            slideStyle={{ display: "flex", alignItems: "center" }}
+            windowSize={1}
+          />
+        </View>
       </SafeAreaView>
     </View>
   );
