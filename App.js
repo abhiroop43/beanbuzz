@@ -1,10 +1,10 @@
-import HomeScreen from './screens/HomeScreen';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import AppNavigation from "./navigation/AppNavigation";
 
 export default function App() {
   return (
     <SafeAreaProvider>
-      <HomeScreen />
+      <AppNavigation />
     </SafeAreaProvider>
   );
 }

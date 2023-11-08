@@ -2,8 +2,10 @@ import { View, Text, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import { themeColors } from "../theme";
 import { PlusIcon, StarIcon } from "react-native-heroicons/solid";
+import { useNavigation } from "@react-navigation/native";
 
 const CoffeeCard = ({ item }) => {
+  const navigation = useNavigation();
   return (
     <View
       style={{
@@ -60,6 +62,7 @@ const CoffeeCard = ({ item }) => {
         >
           <Text className="text-white font-bold text-lg">$ {item.price}</Text>
           <TouchableOpacity
+            onPress={() => navigation.navigate("Product", { ...item })}
             style={{
               shadowColor: "black",
               shadowRadius: 40,
