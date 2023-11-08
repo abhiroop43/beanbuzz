@@ -1,6 +1,7 @@
 # BeanBuzz ☕ - Your Coffee Companion ☕
 
-[//]: # (![BeanBuzz Logo]&#40;link_to_your_logo&#41;)
+![](./screenshots/home.png)
+![](./screenshots/details.png)
 
 Sip, Savor, Share! 🚀 BeanBuzz is your caffeine confidant, your daily dose of delight! Explore an enchanting world of coffee magic, one brew at a time! ✨
 
@@ -28,6 +29,5 @@ Sip, Savor, Share! 🚀 BeanBuzz is your caffeine confidant, your daily dose of 
 
 BeanBuzz is not just an app; it’s a journey to caffeine nirvana! ☕☁️
 
-[//]: # (**☕ Get BeanBuzz Today!** [Download on the App Store]&#40;link_to_app_store&#41; | [Get it on Google Play]&#40;link_to_google_play&#41;)
 
 Unite with the coffee community and celebrate each cup with BeanBuzz! 🎉
